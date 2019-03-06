@@ -30,17 +30,20 @@ public class Calendar {
 		String PROMPT ="cal>";
 		Scanner scanner = new Scanner(System.in);
 		Calendar cal = new Calendar();
-		System.out.println("반복횟수를 입력하세요");
-		int numberOfInput = scanner.nextInt();
-		int[] months = new int[numberOfInput];
-		for (int i=0; i < numberOfInput; i++) {
-			System.out.println("달을 입력하세요");
+
+		while(true) {
+		System.out.println("달을 입력하세요");
 			System.out.print(PROMPT);
-			months[i] = scanner.nextInt();
+			int month = scanner.nextInt();
+			if (month == -1) {
+				break;
 			}
-		for (int i=0; i < numberOfInput; i++) {
-			System.out.println(cal.getMaxDaysOfMonth(months[i]));
-		}
+			if (month == 12) {
+				continue;
+			}
+			System.out.printf("%d월은 %d일 까지 있습니다.\n", month, cal.getMaxDaysOfMonth(month));
+		} 
+		System.out.println("Have a nice day!");
 		scanner.close();
 		
 	}
